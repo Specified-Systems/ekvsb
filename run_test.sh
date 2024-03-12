@@ -1,0 +1,1 @@
+target/release/ekvsb workload put --count 10000 --value-size 1KiB | target/release/ekvsb run rocksdb /tmp/rocksdb | target/release/ekvsb summary

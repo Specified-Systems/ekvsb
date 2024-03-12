@@ -75,6 +75,9 @@ enum RunCommand {
 
     #[clap(name = "sled", about = "Sled")]
     Sled { dir: PathBuf },
+
+    #[clap(name = "sdap", about = "Sdap")]
+    Sdap { dir: PathBuf },
 }
 
 #[derive(Debug, clap::Args)]
@@ -458,6 +461,10 @@ fn handle_run_subcommand(opt: &Opt, command: &RunCommand) -> Result<()> {
         }
         RunCommand::Sled { dir } => {
             let kvs = track!(kvs::SledTree::new(dir))?;
+            track!(execute(kvs, workload))?;
+        },
+        RunCommand::Sdap { dir } => {
+            let kvs = kvs::SdapCache::new();
             track!(execute(kvs, workload))?;
         }
     }

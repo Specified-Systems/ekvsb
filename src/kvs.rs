@@ -7,11 +7,13 @@ pub use self::cannyls::{CannyLsDevice, CannyLsOptions, CannyLsStorage};
 pub use self::fs::FileSystemKvs;
 pub use self::rocksdb::RocksDb;
 pub use self::sled::SledTree;
+pub use self::sdap::SdapCache;
 
 mod cannyls;
 mod fs;
 mod rocksdb;
 mod sled;
+mod sdap;
 
 pub trait KeyValueStore {
     type OwnedValue;
